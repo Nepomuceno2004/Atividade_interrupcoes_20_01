@@ -15,7 +15,7 @@
 static volatile uint32_t last_time = 0; // Armazena o tempo do último evento (em microssegundos)
 
 // Variável global para armazenar a cor (Entre 0 e 255 para intensidade)
-uint8_t led_r = 0; // Intensidade do vermelho
+uint8_t led_r = 2; // Intensidade do vermelho
 uint8_t led_g = 0; // Intensidade do verde
 uint8_t led_b = 2; // Intensidade do azul
 
@@ -30,35 +30,22 @@ bool numero_0[NUM_PIXELS] = {
     1, 1, 1, 1, 1};
 
 bool numero_1[NUM_PIXELS] = {
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-};
+    0, 0, 1, 0, 0,
+    0, 0, 1, 0, 0,
+    0, 0, 1, 0, 0,
+    0, 0, 1, 0, 0,
+    0, 0, 1, 0, 0};
 
 bool numero_2[NUM_PIXELS] = {
+    1, 1,
     1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
     1,
     1,
     1,
@@ -73,17 +60,7 @@ bool numero_2[NUM_PIXELS] = {
     1,
     1,
     1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-};
+    1};
 
 bool numero_3[NUM_PIXELS] = {
     1,
@@ -110,7 +87,7 @@ bool numero_3[NUM_PIXELS] = {
     1,
     1,
     1,
-    1,
+    1
 };
 
 bool numero_4[NUM_PIXELS] = {
