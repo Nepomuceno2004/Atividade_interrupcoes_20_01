@@ -15,9 +15,9 @@
 static volatile uint32_t last_time = 0; // Armazena o tempo do último evento (em microssegundos)
 
 // Variável global para armazenar a cor (Entre 0 e 255 para intensidade)
-uint8_t led_r = 2; // Intensidade do vermelho
+uint8_t led_r = 10; // Intensidade do vermelho
 uint8_t led_g = 0; // Intensidade do verde
-uint8_t led_b = 2; // Intensidade do azul
+uint8_t led_b = 10; // Intensidade do azul
 
 int numero_exibido = 0;
 
@@ -44,94 +44,30 @@ bool numero_2[NUM_PIXELS] = {
     1, 1, 1, 1, 1};
 
 bool numero_3[NUM_PIXELS] = {
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1};
+    1, 1, 1, 1, 1,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1};
 
 bool numero_4[NUM_PIXELS] = {
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
+    1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1, 
+    1, 0, 0, 0, 1,
+    1, 0, 0, 0, 1,
 };
 
 bool numero_5[NUM_PIXELS] = {
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
+    1, 1, 1, 1, 1,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0,
+    1, 1, 1, 1, 1,
 };
 
 bool numero_6[NUM_PIXELS] = {
-    1,
-    1,
-    1,
-    1,
-    1,
+    1, 1, 1, 1, 1,
     1,
     0,
     0,
@@ -317,8 +253,7 @@ void gpio_irq_handler(uint gpio, uint32_t events)
     }
 }
 
-int main()
-{
+int main(){
     stdio_init_all();
 
     gpio_init(pinLed);
@@ -344,10 +279,12 @@ int main()
     while (1)
     {
         gpio_put(pinLed, true);
-        sleep_ms(tempo);
+        sleep_ms(tempo); //100ms
 
         gpio_put(pinLed, false);
-        sleep_ms(tempo);
+        sleep_ms(tempo); //100ms
+
+        //1 ciclo, ligar e desligar, a cada 200ms, ou seja, 5 ciclos a cada 1s
     }
 
     return 0;
