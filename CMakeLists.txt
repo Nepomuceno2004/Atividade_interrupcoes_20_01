@@ -28,33 +28,33 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(interrupcao_20_01 C CXX ASM)
+project(interrupcao_27_01 C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(interrupcao_20_01 interrupcao_20_01.c )
+add_executable(interrupcao_27_01 interrupcao_27_01.c )
 
-pico_set_program_name(interrupcao_20_01 "interrupcao_20_01")
-pico_set_program_version(interrupcao_20_01 "0.1")
+pico_set_program_name(interrupcao_27_01 "interrupcao_27_01")
+pico_set_program_version(interrupcao_27_01 "0.1")
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/generated)
 
-pico_generate_pio_header(interrupcao_20_01 ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio OUTPUT_DIR ${CMAKE_CURRENT_LIST_DIR}/generated)
+pico_generate_pio_header(interrupcao_27_01 ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio OUTPUT_DIR ${CMAKE_CURRENT_LIST_DIR}/generated)
 
 # Add the standard library to the build
-target_link_libraries(interrupcao_20_01
+target_link_libraries(interrupcao_27_01
     pico_stdlib 
     hardware_pio
     hardware_clocks
 )
 
 # Add the standard include files to the build
-target_include_directories(interrupcao_20_01 PRIVATE
+target_include_directories(interrupcao_27_01 PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-pico_add_extra_outputs(interrupcao_20_01)
+pico_add_extra_outputs(interrupcao_27_01)
 

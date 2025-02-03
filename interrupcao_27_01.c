@@ -15,9 +15,9 @@
 static volatile uint32_t last_time = 0; // Armazena o tempo do último evento (em microssegundos)
 
 // Variável global para armazenar a cor (Entre 0 e 255 para intensidade)
-uint8_t led_r = 10; // Intensidade do vermelho
+uint8_t led_r = 25; // Intensidade do vermelho
 uint8_t led_g = 0; // Intensidade do verde
-uint8_t led_b = 10; // Intensidade do azul
+uint8_t led_b = 25; // Intensidade do azul
 
 int numero_exibido = 0;
 
@@ -68,110 +68,34 @@ bool numero_5[NUM_PIXELS] = {
 
 bool numero_6[NUM_PIXELS] = {
     1, 1, 1, 1, 1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
+    1, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0,
+    1, 1, 1, 1, 1,
 };
 
 bool numero_7[NUM_PIXELS] = {
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
+    0, 0, 0, 1, 0,
+    0, 0, 1, 0, 0,
+    0, 1, 0, 0, 0,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
 };
 
 bool numero_8[NUM_PIXELS] = {
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
+    1, 1, 1, 1, 1,
+    1, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
+    1, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
 };
 
 bool numero_9[NUM_PIXELS] = {
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
+    1, 1, 1, 1, 1,
+    0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
+    1, 0, 0, 0, 1,
+    1, 1, 1, 1, 1,
 };
 
 //Envia a cor de um LED para a fila de transmissão.
@@ -277,6 +201,8 @@ int main(){
 
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
 
+    set_one_led(led_r, led_g, led_b, escolha_desenho(numero_exibido));
+    
     gpio_set_irq_enabled_with_callback(button_A, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
     gpio_set_irq_enabled_with_callback(button_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
