@@ -174,16 +174,19 @@ bool numero_9[NUM_PIXELS] = {
     1,
 };
 
+//Envia a cor de um LED para a fila de transmissão.
 static inline void put_pixel(uint32_t pixel_grb)
 {
     pio_sm_put_blocking(pio0, 0, pixel_grb << 8u);
 }
 
+//Converte valores RGB para o formato de 32 bits utilizado pelos LEDs WS2812.
 static inline uint32_t urgb_u32(uint8_t r, uint8_t g, uint8_t b)
 {
     return ((uint32_t)(r) << 8) | ((uint32_t)(g) << 16) | (uint32_t)(b);
 }
 
+//Atualiza os LEDs da matriz de acordo com o número a ser exibido.
 void set_one_led(uint8_t r, uint8_t g, uint8_t b, bool led_buffer[])
 {
     // Define a cor com base nos parâmetros fornecidos
@@ -203,6 +206,7 @@ void set_one_led(uint8_t r, uint8_t g, uint8_t b, bool led_buffer[])
     }
 }
 
+//Retorna a matriz correspondente ao número desejado.
 bool *escolha_desenho(int num)
 {
     switch (num)
